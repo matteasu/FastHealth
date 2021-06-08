@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome"
+        android:layout_marginTop="60dp"
+        android:textSize="17dp"
+        android:layout_marginLeft="20dp">
+
+    </TextView>
+
+    <EditText
+        android:background="@drawable/edit_text_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="5dp"
+        android:inputType="text">
+
+    </EditText>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cognome"
+        android:textSize="17dp"
+        android:layout_marginLeft="20dp">
+
+    </TextView>
+
+    <EditText
+        android:background="@drawable/edit_text_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="5dp"
+        android:inputType="text">
+
+    </EditText>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textSize="17dp"
+        android:layout_marginLeft="20dp">
+
+    </TextView>
+
+    <EditText
+        android:background="@drawable/edit_text_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="5dp"
+        android:inputType="text">
+
+    </EditText>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="17dp"
+        android:layout_marginLeft="20dp">
+
+    </TextView>
+
+    <EditText
+        android:background="@drawable/edit_text_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="5dp"
+        android:inputType="text">
+
+    </EditText>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conferma Password"
+        android:textSize="17dp"
+        android:layout_marginLeft="20dp">
+
+    </TextView>
+
+    <EditText
+        android:background="@drawable/edit_text_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="5dp"
+        android:inputType="text">
+
+    </EditText>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Codice Fiscale"
+        android:textSize="17dp"
+        android:layout_marginLeft="20dp">
+
+    </TextView>
+
+    <EditText
+        android:background="@drawable/edit_text_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="5dp"
+        android:inputType="text">
+
+    </EditText>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Registrati"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="20dp">
+
+        </Button>
+
+
+    </LinearLayout>
+
+</LinearLayout>
