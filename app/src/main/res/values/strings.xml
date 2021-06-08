@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FastHealth</string>
+    <string name="reg">Non sei iscritto? <u>Registrati</u></string>
 </resources>
