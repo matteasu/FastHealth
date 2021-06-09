@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:text="Benvenuto"
+            android:textSize="35dp"
+
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="left"
+            android:layout_marginLeft="90dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="60dp">
+        </TextView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Prenota una prestazione"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="20dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp">
+
+        </Button>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Cerca una struttura"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="20dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp">
+
+        </Button>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Le mie prenotazioni"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="20dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp">
+
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>
