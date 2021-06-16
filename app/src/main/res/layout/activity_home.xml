@@ -16,10 +16,37 @@
         android:orientation="vertical"
         android:gravity="center">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/homeIndietro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_arrow_back_outline"
+                android:layout_alignParentStart="true"
+                android:clickable="true"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_alignParentLeft="true" />
+            <ImageView
+                android:id="@+id/homeSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_settings_outline"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
         <TextView
             android:text="Benvenuto"
             android:textSize="35dp"
-
+            android:id="@+id/homeTxt"
             android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -39,6 +66,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="Prenota una prestazione"
             android:textAllCaps="false"
+            android:id="@+id/homePrenota"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textSize="20dp"
             android:layout_marginLeft="60dp"
@@ -54,6 +82,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="Cerca una struttura"
             android:textAllCaps="false"
+            android:id="@+id/homeSearch"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textSize="20dp"
             android:layout_marginLeft="60dp"
@@ -70,6 +99,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="Le mie prenotazioni"
             android:textAllCaps="false"
+            android:id="@+id/homePrenotazioni"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textSize="20dp"
             android:layout_marginLeft="60dp"
