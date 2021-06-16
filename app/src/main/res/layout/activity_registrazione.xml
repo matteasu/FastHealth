@@ -24,6 +24,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="5dp"
+        android:id="@+id/regNome"
         android:inputType="text">
 
     </EditText>
@@ -47,6 +48,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="5dp"
+        android:id="@+id/regCognome"
         android:inputType="text">
 
     </EditText>
@@ -69,6 +71,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="5dp"
+        android:id="@+id/regUsername"
         android:inputType="text">
 
     </EditText>
@@ -91,7 +94,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="5dp"
-        android:inputType="text">
+        android:id="@+id/regPassword"
+        android:inputType="textPassword">
 
     </EditText>
     <Space
@@ -113,7 +117,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="5dp"
-        android:inputType="text">
+        android:id="@+id/regCpassword"
+        android:inputType="textPassword">
 
     </EditText>
     <Space
@@ -135,6 +140,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="5dp"
+        android:id="@+id/regCF"
         android:inputType="text">
 
     </EditText>
@@ -153,6 +159,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="Registrati"
             android:textAllCaps="false"
+            android:id="@+id/regButton"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textSize="20dp">
 

@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 if ((uLog = recuperaUtente(usr, psw)) != null) {
                     Intent showResult = new Intent(MainActivity.this, Home.class);
                     showResult.putExtra("utente", uLog);
-                    showResult.putExtra("lista", utenti);
+                    //showResult.putExtra("lista", utenti);
                     startActivityForResult(showResult, loginHome);
                 }
             }
