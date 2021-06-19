@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         setContentView(R.layout.activity_main);
         //recupero dei dati aggiornati
-        if (requestCode == loginRegistrazione || requestCode == loginRegistrazione) {
+        if (requestCode == loginRegistrazione || requestCode == loginHome) {
             if (resultCode == Activity.RESULT_OK) {
                 utenti = (ArrayList<Utente>) data.getSerializableExtra("lista");
             }
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 if ((uLog = recuperaUtente(usr, psw)) != null) {
                     Intent showResult = new Intent(MainActivity.this, Home.class);
                     showResult.putExtra("utente", uLog);
-                    //showResult.putExtra("lista", utenti);
+                    showResult.putExtra("lista", utenti);
                     startActivityForResult(showResult, loginHome);
                 }
             }
