@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //utenti.add(new Utente("m","a","admin","a","aa"));
         //recupero elementi view
         username=findViewById(R.id.loginUsername);
         password=findViewById(R.id.loginPassword);

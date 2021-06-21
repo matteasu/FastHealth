@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Home extends AppCompatActivity {
 TextView testoHeader;
@@ -25,6 +26,8 @@ int homeGestionePrenotazioni=5;
 int homeImpostazioni=6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Prenotazione p=new Prenotazione("prova","aa","aa","aa",null);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         testoHeader=findViewById(R.id.homeTxt);
@@ -53,11 +56,15 @@ int homeImpostazioni=6;
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(c, t, duration).show();
         });
+        Prenotazione pp=new Prenotazione("BBBBB","aa","aa","aa",null);
         prenotazioni.setOnClickListener(v->{
-            Context c = this.getApplicationContext();
-            CharSequence t = "prenotazioni";
-            int duration = Toast.LENGTH_SHORT;
-            Toast.makeText(c, t, duration).show();
+            Intent apriPrenotazioni = new Intent(Home.this, ActivityPrenotazioni.class);
+            u.addPrenotazione(p);
+            u.addPrenotazione(pp);
+            apriPrenotazioni.putExtra("utente", u);
+
+            apriPrenotazioni.putExtra("lista", utenti);
+            startActivityForResult(apriPrenotazioni, homeGestionePrenotazioni);
         });
         settingsBtn.setOnClickListener(v->{
             Intent apriImpostazioni = new Intent(Home.this, Impostazioni.class);
@@ -86,6 +93,12 @@ int homeImpostazioni=6;
                 u=(Utente)data.getSerializableExtra("utente");
             }
 
+        }
+
+        if(requestCode==homeGestionePrenotazioni){
+            if(resultCode==Activity.RESULT_OK){
+                u=(Utente)data.getSerializableExtra("utente");
+            }
         }
 
         testoHeader=findViewById(R.id.homeTxt);
@@ -117,10 +130,12 @@ int homeImpostazioni=6;
             Toast.makeText(c, t, duration).show();
         });
         prenotazioni.setOnClickListener(v->{
-            Context c = this.getApplicationContext();
-            CharSequence t = "prenotazioni";
-            int duration = Toast.LENGTH_SHORT;
-            Toast.makeText(c, t, duration).show();
+            Intent apriPrenotazioni = new Intent(Home.this, ActivityPrenotazioni.class);
+
+            apriPrenotazioni.putExtra("utente", u);
+
+            apriPrenotazioni.putExtra("lista", utenti);
+            startActivityForResult(apriPrenotazioni, homeGestionePrenotazioni);
         });
         settingsBtn.setOnClickListener(v->{
             Intent apriImpostazioni = new Intent(Home.this, Impostazioni.class);

@@ -1,6 +1,7 @@
 package com.a2b2l1p.fasthealth;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Utente implements Serializable {
 
@@ -9,12 +10,18 @@ public class Utente implements Serializable {
     private String Username;
     private String Password;
     private String CF;
+
+
+
+    private ArrayList <Prenotazione> prenotazioni;
     public Utente(String nome, String cognome, String username, String password, String CF) {
         Nome = nome;
         Cognome = cognome;
         Username = username;
         Password = password;
         this.CF = CF;
+        prenotazioni=new ArrayList<>();
+
     }
 
     public String getNome() {
@@ -53,6 +60,16 @@ public class Utente implements Serializable {
         return CF;
     }
 
+    public ArrayList<Prenotazione> getPrenotazioni() {
+        return prenotazioni;
+    }
+
+    public void addPrenotazione(Prenotazione p){
+        prenotazioni.add(p);
+    }
+
+
+
     public void setCF(String CF) {
         this.CF = CF;
     }
@@ -72,4 +89,8 @@ public class Utente implements Serializable {
 
         return r;
     }
+
+
+
+
 }
