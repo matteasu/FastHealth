@@ -7,31 +7,37 @@ public class Prenotazione implements Serializable {
 
     private String nomeEsame;
     private String nomeStruttura;
+    private String nomeMedico;
     private String ora;
     private String codAcc;
     private String noteMed;
     private boolean pagato;
     private Calendar data;
 
-    public Prenotazione(String nomeEsame, String nomeStruttura, String ora, String codAcc, Calendar data) {
+    public Prenotazione(String nomeEsame, String nomeStruttura, String ora,  String codAcc, String nomeMedico, Calendar data) {
         this.nomeEsame = nomeEsame;
         this.nomeStruttura = nomeStruttura;
         this.ora = ora;
         this.codAcc = codAcc;
         this.data = data;
         this.pagato=false;
+        this.nomeMedico=nomeMedico;
         this.noteMed="";
     }
 
-    public Prenotazione(String nomeEsame, String nomeStruttura, String ora, String codAcc, Calendar data,String noteMed) {
+    public Prenotazione(String nomeEsame, String nomeStruttura, String ora, String codAcc, Calendar data,String noteMed,String nomeMedico) {
         this.nomeEsame = nomeEsame;
         this.nomeStruttura = nomeStruttura;
         this.ora = ora;
         this.codAcc = codAcc;
         this.data = data;
         this.pagato=false;
+        this.nomeMedico=nomeMedico;
         this.noteMed=noteMed;
     }
+
+    public String getNomeMedico(){return nomeMedico;}
+    public void  setNomeMedico(String nome){this.nomeMedico=nome;}
 
     public String getNomeEsame() {
         return nomeEsame;

@@ -37,7 +37,7 @@ public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazion
         Prenotazione p = prenotazioni.get(position);
         holder.nomeEsame.setText(p.getNomeEsame());
         holder.struttura.setText(p.getNomeStruttura());
-        holder.dataOra.setText("placeHolder");
+        holder.dataOra.setText(p.getOra());
         holder.pagamento.setText(p.isPagato() ? "Pagato" : "Da pagare");
     }
 

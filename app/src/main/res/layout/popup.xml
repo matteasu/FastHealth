@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="6dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/popupClose"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_close_outline"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="close popup" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome prestazione"
+        android:textSize="20dp"
+        android:layout_below="@id/popupClose"
+        android:textColor="@color/black"
+        android:id="@+id/popupNomePrest"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data ora"
+        android:textSize="20dp"
+        android:layout_below="@id/popupNomePrest"
+        android:textColor="@color/black"
+        android:id="@+id/popupData"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Struttura"
+        android:textSize="20dp"
+        android:layout_below="@id/popupData"
+        android:textColor="@color/black"
+        android:id="@+id/popupStruct"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome medico"
+        android:textSize="20dp"
+        android:layout_below="@id/popupStruct"
+        android:textColor="@color/black"
+        android:id="@+id/popupNomeMed"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:id="@+id/popupaaa"
+        android:layout_below="@id/popupNomeMed"
+        android:text="Codice accettazione:"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/popupaaa"
+        android:layout_centerHorizontal="true"
+        android:text="W01"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="60dp"
+        android:id="@+id/popupCA"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/persAtt"
+        android:layout_below="@id/popupCA"
+        android:text="Persone in attesa:"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note del medico:"
+        android:layout_below="@id/persAtt"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:id="@+id/noteMed"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noteMed"
+        android:layout_marginStart="4dp"
+        android:id="@+id/noteMedT"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/sfondonote"
+        android:padding="4dp"
+        android:paddingBottom="0dp"
+        android:text="aaaaaaaaaaaaaaaaaaaaaaa\n \n \naaaaaaaaaaaaa\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_below="@id/noteMedT"
+        android:layout_height="40dp"
+        android:id="@+id/spazio"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="paga"
+
+        android:layout_below="@id/spazio"
+        android:id="@+id/paga"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/modificaAPP"
+        android:text="Modifica appuntamento"
+        android:textAllCaps="false"
+        android:layout_below="@id/spazio"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+
+
+</RelativeLayout>

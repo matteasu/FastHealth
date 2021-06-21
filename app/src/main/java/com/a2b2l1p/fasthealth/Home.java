@@ -27,7 +27,7 @@ int homeImpostazioni=6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Prenotazione p=new Prenotazione("prova","aa","aa","aa",null);
+        Prenotazione p=new Prenotazione("Colonoscopia","Policlinico Dulio Casula","13:40","W40","Sergio Pinto",null);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         testoHeader=findViewById(R.id.homeTxt);
@@ -56,9 +56,10 @@ int homeImpostazioni=6;
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(c, t, duration).show();
         });
-        Prenotazione pp=new Prenotazione("BBBBB","aa","aa","aa",null);
+        Prenotazione pp=new Prenotazione("BBBBB","aa","aa","aa","ciao",null);
         prenotazioni.setOnClickListener(v->{
             Intent apriPrenotazioni = new Intent(Home.this, ActivityPrenotazioni.class);
+            p.setPagato(true);
             u.addPrenotazione(p);
             u.addPrenotazione(pp);
             apriPrenotazioni.putExtra("utente", u);
