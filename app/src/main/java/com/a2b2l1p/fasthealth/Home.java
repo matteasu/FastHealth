@@ -15,59 +15,57 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Home extends AppCompatActivity {
-TextView testoHeader;
-Button prenota,ricerca,prenotazioni;
-ImageView settingsBtn;
-Utente u;
-ArrayList<Utente> utenti;
-int homeCreaPrenotazione=3;
-int homeRicercaStruttura=4;
-int homeGestionePrenotazioni=5;
-int homeImpostazioni=6;
+    TextView testoHeader;
+    Button prenota, ricerca, prenotazioni;
+    ImageView settingsBtn;
+    Utente u;
+    ArrayList<Utente> utenti;
+    int homeCreaPrenotazione = 3;
+    int homeRicercaStruttura = 4;
+    int homeGestionePrenotazioni = 5;
+    int homeImpostazioni = 6;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Prenotazione p=new Prenotazione("Colonoscopia","Policlinico Dulio Casula","13:40","W40","Sergio Pinto",null);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        testoHeader=findViewById(R.id.homeTxt);
-        prenota=findViewById(R.id.homePrenota);
-        ricerca=findViewById(R.id.homeSearch);
+        testoHeader = findViewById(R.id.homeTxt);
+        prenota = findViewById(R.id.homePrenota);
+        ricerca = findViewById(R.id.homeSearch);
 
-        settingsBtn=findViewById(R.id.homeSettings);
-        prenotazioni=findViewById(R.id.homePrenotazioni);
+        settingsBtn = findViewById(R.id.homeSettings);
+        prenotazioni = findViewById(R.id.homePrenotazioni);
         utenti = (ArrayList<Utente>) getIntent().getSerializableExtra("lista");
-        u=(Utente)getIntent().getSerializableExtra("utente");
-        testoHeader.setText(testoHeader.getText()+"\n"+u.getNome());
+        u = (Utente) getIntent().getSerializableExtra("utente");
+        testoHeader.setText(testoHeader.getText() + "\n" + u.getNome());
 
 
-
-
-
-        prenota.setOnClickListener(v->{
+        prenota.setOnClickListener(v -> {
             Context c = this.getApplicationContext();
             CharSequence t = "prenota";
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(c, t, duration).show();
         });
-        ricerca.setOnClickListener(v->{
+        ricerca.setOnClickListener(v -> {
             Context c = this.getApplicationContext();
             CharSequence t = "ricerca";
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(c, t, duration).show();
         });
-        Prenotazione pp=new Prenotazione("BBBBB","aa","aa","aa","ciao",null);
-        prenotazioni.setOnClickListener(v->{
+        Prenotazione pp = new Prenotazione("BBBBB", "aa", "aa", "aa", "ciao", null, (float) 1.2);
+        prenotazioni.setOnClickListener(v -> {
             Intent apriPrenotazioni = new Intent(Home.this, ActivityPrenotazioni.class);
-            p.setPagato(true);
-            u.addPrenotazione(p);
-            u.addPrenotazione(pp);
+            //p.setPagato(true);
+            //u.addPrenotazione(p);
+            //u.addPrenotazione(pp);
             apriPrenotazioni.putExtra("utente", u);
 
             apriPrenotazioni.putExtra("lista", utenti);
             startActivityForResult(apriPrenotazioni, homeGestionePrenotazioni);
         });
-        settingsBtn.setOnClickListener(v->{
+        settingsBtn.setOnClickListener(v -> {
             Intent apriImpostazioni = new Intent(Home.this, Impostazioni.class);
             apriImpostazioni.putExtra("utente", u);
             apriImpostazioni.putExtra("lista", utenti);
@@ -85,52 +83,49 @@ int homeImpostazioni=6;
         if (requestCode == homeImpostazioni) {
             if (resultCode == Activity.RESULT_OK) {
                 utenti = (ArrayList<Utente>) data.getSerializableExtra("lista");
-                if((boolean)data.getSerializableExtra("esci")){
-                    Intent returnIntent=getIntent();
-                    returnIntent.putExtra("lista",utenti);
+                if ((boolean) data.getSerializableExtra("esci")) {
+                    Intent returnIntent = getIntent();
+                    returnIntent.putExtra("lista", utenti);
                     setResult(Activity.RESULT_OK, returnIntent);
                     finish();
                 }
-                u=(Utente)data.getSerializableExtra("utente");
+                u = (Utente) data.getSerializableExtra("utente");
             }
 
         }
 
-        if(requestCode==homeGestionePrenotazioni){
-            if(resultCode==Activity.RESULT_OK){
-                u=(Utente)data.getSerializableExtra("utente");
+        if (requestCode == homeGestionePrenotazioni) {
+            if (resultCode == Activity.RESULT_OK) {
+                u = (Utente) data.getSerializableExtra("utente");
+                if(utenti.remove(u))
+                    utenti.add(u);
             }
         }
 
-        testoHeader=findViewById(R.id.homeTxt);
-        prenota=findViewById(R.id.homePrenota);
-        ricerca=findViewById(R.id.homeSearch);
+        testoHeader = findViewById(R.id.homeTxt);
+        prenota = findViewById(R.id.homePrenota);
+        ricerca = findViewById(R.id.homeSearch);
 
-        settingsBtn=findViewById(R.id.homeSettings);
-        prenotazioni=findViewById(R.id.homePrenotazioni);
+        settingsBtn = findViewById(R.id.homeSettings);
+        prenotazioni = findViewById(R.id.homePrenotazioni);
 
-        testoHeader.setText(testoHeader.getText()+"\n"+u.getNome());
+        testoHeader.setText(testoHeader.getText() + "\n" + u.getNome());
         //utenti = (ArrayList<Utente>) getIntent().getSerializableExtra("lista");
 
 
-
-
-
-
-
-        prenota.setOnClickListener(v->{
+        prenota.setOnClickListener(v -> {
             Context c = this.getApplicationContext();
             CharSequence t = "prenota";
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(c, t, duration).show();
         });
-        ricerca.setOnClickListener(v->{
+        ricerca.setOnClickListener(v -> {
             Context c = this.getApplicationContext();
             CharSequence t = "ricerca";
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(c, t, duration).show();
         });
-        prenotazioni.setOnClickListener(v->{
+        prenotazioni.setOnClickListener(v -> {
             Intent apriPrenotazioni = new Intent(Home.this, ActivityPrenotazioni.class);
 
             apriPrenotazioni.putExtra("utente", u);
@@ -138,13 +133,12 @@ int homeImpostazioni=6;
             apriPrenotazioni.putExtra("lista", utenti);
             startActivityForResult(apriPrenotazioni, homeGestionePrenotazioni);
         });
-        settingsBtn.setOnClickListener(v->{
+        settingsBtn.setOnClickListener(v -> {
             Intent apriImpostazioni = new Intent(Home.this, Impostazioni.class);
             apriImpostazioni.putExtra("utente", u);
             apriImpostazioni.putExtra("lista", utenti);
             startActivityForResult(apriImpostazioni, homeImpostazioni);
         });
-
 
 
     }//onActivityResult

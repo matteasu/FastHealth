@@ -9,28 +9,31 @@ public class Prenotazione implements Serializable {
     private String nomeStruttura;
     private String nomeMedico;
     private String ora;
+    private float costo;
     private String codAcc;
     private String noteMed;
     private boolean pagato;
     private Calendar data;
 
-    public Prenotazione(String nomeEsame, String nomeStruttura, String ora,  String codAcc, String nomeMedico, Calendar data) {
+    public Prenotazione(String nomeEsame, String nomeStruttura, String ora,  String codAcc, String nomeMedico, Calendar data,float costo) {
         this.nomeEsame = nomeEsame;
         this.nomeStruttura = nomeStruttura;
         this.ora = ora;
         this.codAcc = codAcc;
         this.data = data;
         this.pagato=false;
+        this.costo=costo;
         this.nomeMedico=nomeMedico;
         this.noteMed="";
     }
 
-    public Prenotazione(String nomeEsame, String nomeStruttura, String ora, String codAcc, Calendar data,String noteMed,String nomeMedico) {
+    public Prenotazione(String nomeEsame, String nomeStruttura, String ora, String codAcc, Calendar data,String noteMed,String nomeMedico,float costo) {
         this.nomeEsame = nomeEsame;
         this.nomeStruttura = nomeStruttura;
         this.ora = ora;
         this.codAcc = codAcc;
         this.data = data;
+        this.costo=costo;
         this.pagato=false;
         this.nomeMedico=nomeMedico;
         this.noteMed=noteMed;
@@ -95,6 +98,9 @@ public class Prenotazione implements Serializable {
         this.data = data;
     }
 
+    public float getCosto(){return costo;}
+
+    public void setCosto(float costo){this.costo=costo;}
 
 
 

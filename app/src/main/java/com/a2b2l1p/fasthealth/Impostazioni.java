@@ -50,7 +50,7 @@ public class Impostazioni extends AppCompatActivity {
         conf.setOnClickListener(v->{
             if(verificaFrom()) {
                 utenti.remove(u);
-                u.setNome(u.getNome()+"MM");
+                //u.setNome(u.getNome()+"MM");
                 u.setPassword(nP.getText().toString());
                 utenti.add(u);
                 Context c = this.getApplicationContext();

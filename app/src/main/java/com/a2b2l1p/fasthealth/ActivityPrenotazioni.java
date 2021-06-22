@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,29 +22,32 @@ import java.util.ArrayList;
 public class ActivityPrenotazioni extends AppCompatActivity {
     ArrayList<Prenotazione> prenotazioni = new ArrayList<>();
     SearchView sw;
-    private AlertDialog.Builder dialogBuilder;
-    private AlertDialog dialog;
+    private AlertDialog.Builder dialogBuilder,dialogBP;
+    private AlertDialog dialog,dialogP;
 
 
     //elementi dialog
-    TextView np,d,s,nm,cA,npa,note;
+    TextView np,d,s,nm,cA,npa,note,amm;
+    EditText nC,sC,CCV,nT;
+    Button an,po;
     ImageView close;
     Button p,mA;
-
+    RecyclerView rW;
+    adapterPrenotazioni aRW;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Utente u;
         ImageView back;
-        RecyclerView rW;
-        adapterPrenotazioni aRW;
-        Prenotazione pp=new Prenotazione("BBBBB","aa","aa","aa","ciao",null);
+
+        Prenotazione p = new Prenotazione("Colonoscopia", "Policlinico Dulio Casula", "13:40", "W40", "Sergio Pinto", null, (float) 69.49);
         RecyclerView.LayoutManager lMRW;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prenotazioni);
 
         u = (Utente) getIntent().getSerializableExtra("utente");
+        u.getPrenotazioni().add(p);
         prenotazioni = u.getPrenotazioni();
         rW = findViewById(R.id.prenotazioniRW);
         back=findViewById(R.id.prenotazioniIndietro);
@@ -105,6 +110,46 @@ public class ActivityPrenotazioni extends AppCompatActivity {
         note.setText(prenotazioni.get(position).getNoteMed().equals("") ?"Nessuna nota da parte del medico":prenotazioni.get(position).getNoteMed());
         close.setOnClickListener(v->dialog.dismiss());
         p.setVisibility(prenotazioni.get(position).isPagato()?View.GONE:View.VISIBLE);
+
+        p.setOnClickListener(v->{
+            dialogBP=new AlertDialog.Builder(this);
+            final View popupP=getLayoutInflater().inflate(R.layout.popup_pagamento,null);
+            //TextView nC,sC,CCV,nT;
+            //    Button an,po;
+            nC=popupP.findViewById(R.id.pagCC);
+            sC=popupP.findViewById(R.id.pagSS);
+            CCV=popupP.findViewById(R.id.pagCCV);
+            nT=popupP.findViewById(R.id.pagTit);
+            an=popupP.findViewById(R.id.annulla);
+            po=popupP.findViewById(R.id.payNow);
+            amm=popupP.findViewById(R.id.pagAmmount);
+
+
+            amm.setText(amm.getText()+""+prenotazioni.get(position).getCosto()+"€");
+
+            po.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    prenotazioni.get(position).setPagato(true);
+                    p.setVisibility(prenotazioni.get(position).isPagato()?View.GONE:View.VISIBLE);
+                    aRW.notifyDataSetChanged();
+
+                    dialogP.dismiss();
+
+
+                }
+            });
+            an.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialogP.dismiss();
+                }
+            });
+            dialogBP.setView(popupP);
+            dialogP=dialogBP.create();
+            dialogP.show();
+        });
+
         dialogBuilder.setView(popup);
         dialog=dialogBuilder.create();
         dialog.show();
