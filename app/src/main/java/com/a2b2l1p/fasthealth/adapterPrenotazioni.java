@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,12 +79,13 @@ public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazion
             prenotazioni.clear();
             prenotazioni.addAll((List<Prenotazione>)results.values);
             notifyDataSetChanged();
+
         }
     };
 
     public static class holder extends RecyclerView.ViewHolder {
         TextView nomeEsame, dataOra, struttura;
-        Button pagamento;
+        Chip pagamento;
 
         public holder(View itemView, OnItemClickListener listener) {
             super(itemView);
@@ -108,5 +111,7 @@ public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazion
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
+
+
 
 }

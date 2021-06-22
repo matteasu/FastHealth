@@ -40,16 +40,16 @@
             android:textColor="@color/black"
             android:textSize="20dp" />
 
-        <Button
+        <com.google.android.material.chip.Chip
             android:id="@+id/cPPaga"
+            style="@style/Widget.App.Chip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/cPS"
+            android:clickable="false"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-
             android:text="pagato"
-            app:cornerRadius="10dp" />
+            app:closeIconVisible="false" />
     </RelativeLayout>
 
 

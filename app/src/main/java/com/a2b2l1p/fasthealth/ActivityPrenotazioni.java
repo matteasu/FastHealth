@@ -2,11 +2,12 @@ package com.a2b2l1p.fasthealth;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -127,26 +128,20 @@ public class ActivityPrenotazioni extends AppCompatActivity {
 
             amm.setText(amm.getText()+""+prenotazioni.get(position).getCosto()+"€");
 
-            po.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            po.setOnClickListener(v1 -> {
+                if(verificaFrom()) {
                     prenotazioni.get(position).setPagato(true);
-                    p.setVisibility(prenotazioni.get(position).isPagato()?View.GONE:View.VISIBLE);
+                    p.setVisibility(prenotazioni.get(position).isPagato() ? View.GONE : View.VISIBLE);
                     aRW.notifyDataSetChanged();
-
                     dialogP.dismiss();
+                    v1.clearFocus();
+                    }
 
-
-                }
             });
-            an.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialogP.dismiss();
-                }
-            });
+            an.setOnClickListener(v12 -> dialogP.dismiss());
             dialogBP.setView(popupP);
             dialogP=dialogBP.create();
+            v.clearFocus();
             dialogP.show();
         });
 
@@ -154,5 +149,26 @@ public class ActivityPrenotazioni extends AppCompatActivity {
         dialog=dialogBuilder.create();
         dialog.show();
 
+    }
+
+    protected boolean verificaFrom() {
+        boolean err = true;
+        if(nC.getText().length()==0){
+            nC.setError("Numero di carta mancante");
+            err=false;
+        }else nC.setError(null);
+        if(sC.getText().length()==0){
+            sC.setError("Scadenza della carta mancante");
+            err=false;
+        }else sC.setError(null);
+        if(CCV.getText().length()==0){
+            CCV.setError("CCV mancante");
+            err=false;
+        }else CCV.setError(null);
+        if(nT.getText().length()==0){
+            nT.setError("Nome del titolare mancante");
+            err=false;
+        }else nT.setError(null);
+        return err;
     }
 }
