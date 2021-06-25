@@ -38,6 +38,7 @@
             android:textAllCaps="true"
             android:textSize="10dp"
             android:textStyle="bold"
+            android:id="@+id/confNo"
             app:chipBackgroundColor="#91FF0000" />
 
         <com.google.android.material.chip.Chip
@@ -46,9 +47,10 @@
             android:layout_below="@id/sp4"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Annulla"
+            android:text="Conferma"
             android:textAllCaps="true"
             android:textSize="10dp"
+            android:id="@+id/confOK"
             android:textStyle="bold"
             app:chipBackgroundColor="#782A7ED2" />
 

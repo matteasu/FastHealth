@@ -4,11 +4,9 @@ package com.a2b2l1p.fasthealth;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,38 +14,39 @@ import com.google.android.material.chip.Chip;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazioni.holder> implements Filterable {
-    private ArrayList<Prenotazione> prenotazioni;
-    private ArrayList<Prenotazione> full;
+public class adapterricercaStruct extends RecyclerView.Adapter<adapterricercaStruct.holder> implements Filterable {
+    private ArrayList<StrutturaEsame> s;
+    private ArrayList<StrutturaEsame> full;
+
     private OnItemClickListener listener;
 
-    public adapterPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
-        this.prenotazioni = prenotazioni;
-        this.full = new ArrayList<>(prenotazioni);
+    public adapterricercaStruct(ArrayList<StrutturaEsame> s) {
+        this.s = s;
+        this.full = new ArrayList<>(s);
     }
 
     @Override
     public holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardprenotazioni, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_struttura, parent, false);
         holder vH = new holder(v, listener);
         return vH;
     }
 
     @Override
-    public void onBindViewHolder(adapterPrenotazioni.holder holder, int position) {
-        Prenotazione p = prenotazioni.get(position);
-        holder.nomeEsame.setText(p.getNomeEsame());
-        holder.struttura.setText(p.getNomeStruttura());
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        holder.dataOra.setText(format.format(p.getData().getTime())+" "+p.getOra());
-        holder.pagamento.setText(p.isPagato() ? "Pagato" : "Da pagare");
+    public void onBindViewHolder(adapterricercaStruct.holder holder, int position) {
+        StrutturaEsame st = s.get(position);
+
+        holder.nomeStrut.setText(st.getNomeStruttura());
+        holder.distanza.setText(st.getDistanza()+"Km");
+
     }
 
     @Override
     public int getItemCount() {
-        return prenotazioni.size();
+        return s.size();
     }
 
 
@@ -60,14 +59,14 @@ public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazion
     private Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<Prenotazione> filtrata = new ArrayList<>();
+            List<StrutturaEsame> filtrata = new ArrayList<>();
             if (constraint == null || constraint.length() == 0) {
                 filtrata.addAll(full);
             } else {
                 String pattern = constraint.toString().toLowerCase().trim();
-                for (Prenotazione p : full) {
-                    if (p.getNomeEsame().toLowerCase().contains(pattern)) {
-                        filtrata.add(p);
+                for (StrutturaEsame e : full) {
+                    if (e.getNomeStruttura().toLowerCase().contains(pattern)) {
+                        filtrata.add(e);
                     }
                 }
             }
@@ -78,23 +77,21 @@ public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazion
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            prenotazioni.clear();
-            prenotazioni.addAll((List<Prenotazione>)results.values);
+            s.clear();
+            s.addAll((List<StrutturaEsame>)results.values);
             notifyDataSetChanged();
 
         }
     };
 
     public static class holder extends RecyclerView.ViewHolder {
-        TextView nomeEsame, dataOra, struttura;
-        Chip pagamento;
+        TextView nomeStrut,distanza;
+
 
         public holder(View itemView, OnItemClickListener listener) {
             super(itemView);
-            nomeEsame = itemView.findViewById(R.id.cPNE);
-            dataOra = itemView.findViewById(R.id.cPD);
-            struttura = itemView.findViewById(R.id.cPS);
-            pagamento = itemView.findViewById(R.id.cPPaga);
+            nomeStrut = itemView.findViewById(R.id.cardNomeStruttura);
+            distanza=itemView.findViewById(R.id.cardDistanza);
             itemView.setOnClickListener(v -> {
                 if (listener != null) {
                     int position = getAdapterPosition();

@@ -2,12 +2,14 @@ package com.a2b2l1p.fasthealth;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Random;
 
 public class Prenotazione implements Serializable {
 
     private String nomeEsame;
     private String nomeStruttura;
     private String nomeMedico;
+    private int persCoda;
     private String ora;
     private float costo;
     private String codAcc;
@@ -25,6 +27,7 @@ public class Prenotazione implements Serializable {
         this.costo=costo;
         this.nomeMedico=nomeMedico;
         this.noteMed="";
+        this.persCoda= (int) Math.floor(Math.random()*(10-0+1)+0);
     }
 
     public Prenotazione(String nomeEsame, String nomeStruttura, String ora, String codAcc, Calendar data,String noteMed,String nomeMedico,float costo) {
@@ -37,6 +40,7 @@ public class Prenotazione implements Serializable {
         this.pagato=false;
         this.nomeMedico=nomeMedico;
         this.noteMed=noteMed;
+        this.persCoda= (int) Math.floor(Math.random()*(10-0+1)+0);
     }
 
     public String getNomeMedico(){return nomeMedico;}
@@ -102,6 +106,7 @@ public class Prenotazione implements Serializable {
 
     public void setCosto(float costo){this.costo=costo;}
 
+    public int getPersCoda(){return persCoda;}
 
 
 

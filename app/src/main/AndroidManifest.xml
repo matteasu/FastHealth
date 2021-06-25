@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FastHealth">
-        <activity android:name=".ActivityPrenotazioni"></activity>
+        <activity android:name=".sceltaEsame"></activity>
+        <activity android:name=".ricercaStruttura" />
+        <activity android:name=".sceltaStruttura" />
+        <activity android:name=".ricercaPrestazione" />
+        <activity android:name=".ActivityPrenotazioni" />
         <activity android:name=".Impostazioni" />
         <activity android:name=".Home" />
         <activity android:name=".Registrazione" />

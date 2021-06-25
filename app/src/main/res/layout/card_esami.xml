@@ -6,52 +6,53 @@
     app:cardCornerRadius="4dp"
     app:cardElevation="12dp"
     app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true"
-   >
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        >
+        android:padding="4dp">
 
         <TextView
-            android:id="@+id/cPNE"
+            android:id="@+id/cardNomeEsame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome Esame"
+            android:fontFamily="sans-serif"
+            android:text="Nome esame"
             android:textColor="@color/black"
             android:textSize="20dp" />
-
         <TextView
-            android:id="@+id/cPD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cPNE"
-            android:text="Data e ora"
+            android:layout_below="@id/cardNomeEsame"
+            android:text="prima data utile"
+            android:textSize="15dp"
             android:textColor="@color/black"
-            android:textSize="20dp" />
-
+            android:id="@+id/cardPD"
+            />
         <TextView
-            android:id="@+id/cPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cPD"
-            android:text="Struttura"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
+            android:textSize="25dp"
+            android:layout_alignParentEnd="true"
+            android:text="costo"
+            android:id="@+id/cardCosto"
+            android:textColor="@color/black"/>
         <com.google.android.material.chip.Chip
-            android:id="@+id/cPPaga"
+            android:id="@+id/cPPrenota"
             style="@style/Widget.App.Chip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cPS"
+            android:layout_below="@id/cardCosto"
             android:layout_alignParentEnd="true"
-            android:text="pagato"
-            android:clickable="false"
+            android:text="PRENOTA"
+            android:clickable="true"
             app:closeIconVisible="false"
             android:layout_alignParentRight="true" />
+
     </RelativeLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
 </androidx.cardview.widget.CardView>

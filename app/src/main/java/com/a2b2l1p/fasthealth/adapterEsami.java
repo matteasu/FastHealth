@@ -4,50 +4,43 @@ package com.a2b2l1p.fasthealth;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazioni.holder> implements Filterable {
-    private ArrayList<Prenotazione> prenotazioni;
-    private ArrayList<Prenotazione> full;
+public class adapterEsami extends RecyclerView.Adapter<adapterEsami.holder> implements Filterable {
+    private ArrayList<EsameStruttura> esami;
+    private ArrayList<EsameStruttura> full;
     private OnItemClickListener listener;
 
-    public adapterPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
-        this.prenotazioni = prenotazioni;
-        this.full = new ArrayList<>(prenotazioni);
+    public adapterEsami(ArrayList<EsameStruttura> esami) {
+        this.esami = esami;
+        this.full = new ArrayList<>(esami);
     }
 
     @Override
     public holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardprenotazioni, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_esame, parent, false);
         holder vH = new holder(v, listener);
         return vH;
     }
 
     @Override
-    public void onBindViewHolder(adapterPrenotazioni.holder holder, int position) {
-        Prenotazione p = prenotazioni.get(position);
-        holder.nomeEsame.setText(p.getNomeEsame());
-        holder.struttura.setText(p.getNomeStruttura());
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        holder.dataOra.setText(format.format(p.getData().getTime())+" "+p.getOra());
-        holder.pagamento.setText(p.isPagato() ? "Pagato" : "Da pagare");
+    public void onBindViewHolder(adapterEsami.holder holder, int position) {
+        EsameStruttura e = esami.get(position);
+        holder.nomeEsame.setText(e.getNomeEsame());
     }
 
     @Override
     public int getItemCount() {
-        return prenotazioni.size();
+        return esami.size();
     }
 
 
@@ -60,14 +53,14 @@ public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazion
     private Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<Prenotazione> filtrata = new ArrayList<>();
+            List<EsameStruttura> filtrata = new ArrayList<>();
             if (constraint == null || constraint.length() == 0) {
                 filtrata.addAll(full);
             } else {
                 String pattern = constraint.toString().toLowerCase().trim();
-                for (Prenotazione p : full) {
-                    if (p.getNomeEsame().toLowerCase().contains(pattern)) {
-                        filtrata.add(p);
+                for (EsameStruttura e : full) {
+                    if (e.getNomeEsame().toLowerCase().contains(pattern)) {
+                        filtrata.add(e);
                     }
                 }
             }
@@ -78,23 +71,21 @@ public class adapterPrenotazioni extends RecyclerView.Adapter<adapterPrenotazion
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            prenotazioni.clear();
-            prenotazioni.addAll((List<Prenotazione>)results.values);
+            esami.clear();
+            esami.addAll((List<EsameStruttura>)results.values);
             notifyDataSetChanged();
 
         }
     };
 
     public static class holder extends RecyclerView.ViewHolder {
-        TextView nomeEsame, dataOra, struttura;
-        Chip pagamento;
+        TextView nomeEsame;
+
 
         public holder(View itemView, OnItemClickListener listener) {
             super(itemView);
-            nomeEsame = itemView.findViewById(R.id.cPNE);
-            dataOra = itemView.findViewById(R.id.cPD);
-            struttura = itemView.findViewById(R.id.cPS);
-            pagamento = itemView.findViewById(R.id.cPPaga);
+            nomeEsame = itemView.findViewById(R.id.cardSNomeEsame);
+
             itemView.setOnClickListener(v -> {
                 if (listener != null) {
                     int position = getAdapterPosition();

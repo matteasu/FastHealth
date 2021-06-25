@@ -3,6 +3,7 @@ package com.a2b2l1p.fasthealth;
 import android.app.Activity;
 import android.app.AlertDialog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,12 +13,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class ActivityPrenotazioni extends AppCompatActivity {
@@ -42,13 +46,13 @@ public class ActivityPrenotazioni extends AppCompatActivity {
         Utente u;
         ImageView back;
 
-        Prenotazione p = new Prenotazione("Colonoscopia", "Policlinico Dulio Casula", "13:40", "W40", "Sergio Pinto", null, (float) 69.49);
+        //Prenotazione p = new Prenotazione("Colonoscopia", "Policlinico Dulio Casula", "13:40", "W40", "Sergio Pinto", null, (float) 69.49);
         RecyclerView.LayoutManager lMRW;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prenotazioni);
 
         u = (Utente) getIntent().getSerializableExtra("utente");
-        u.getPrenotazioni().add(p);
+        //u.getPrenotazioni().add(p);
         prenotazioni = u.getPrenotazioni();
         rW = findViewById(R.id.prenotazioniRW);
         back=findViewById(R.id.prenotazioniIndietro);
@@ -105,9 +109,12 @@ public class ActivityPrenotazioni extends AppCompatActivity {
 
         np.setText(prenotazioni.get(position).getNomeEsame());
         s.setText(prenotazioni.get(position).getNomeStruttura());
-        nm.setText(prenotazioni.get(position).getNomeMedico());
+        nm.setText("DR. "+prenotazioni.get(position).getNomeMedico());
         cA.setText(prenotazioni.get(position).getCodAcc());
-        d.setText(prenotazioni.get(position).getOra());
+        npa.setText(npa.getText()+""+prenotazioni.get(position).getPersCoda());
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        d.setText(format.format(prenotazioni.get(position).getData().getTime())+"\n"+prenotazioni.get(position).getOra());
         note.setText(prenotazioni.get(position).getNoteMed().equals("") ?"Nessuna nota da parte del medico":prenotazioni.get(position).getNoteMed());
         close.setOnClickListener(v->dialog.dismiss());
         p.setVisibility(prenotazioni.get(position).isPagato()?View.GONE:View.VISIBLE);
@@ -132,9 +139,13 @@ public class ActivityPrenotazioni extends AppCompatActivity {
                 if(verificaFrom()) {
                     prenotazioni.get(position).setPagato(true);
                     p.setVisibility(prenotazioni.get(position).isPagato() ? View.GONE : View.VISIBLE);
+                    npa.setVisibility(View.GONE);
                     aRW.notifyDataSetChanged();
                     dialogP.dismiss();
-                    v1.clearFocus();
+                    Context c = this.getApplicationContext();
+                    CharSequence t = "Pagamento effetuato con successo";
+                    int duration = Toast.LENGTH_LONG;
+                    Toast.makeText(c, t, duration).show();
                     }
 
             });
