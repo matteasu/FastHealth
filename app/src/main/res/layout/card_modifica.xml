@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/aaaa"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="12dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+
+        <TextView
+            android:id="@+id/cModificaND"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuova data"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/cModifcaNO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cModificaND"
+            android:text="Nuovo orario"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cardModifcaCONF"
+            style="@style/Widget.App.Chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cModifcaNO"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+
+            android:clickable="false"
+            android:text="CONFERMA"
+            app:closeIconVisible="false" />
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

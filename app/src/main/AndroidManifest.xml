@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FastHealth">
-        <activity android:name=".sceltaEsame"></activity>
+        <activity android:name=".modificaData"></activity>
+        <activity android:name=".sceltaEsame" />
         <activity android:name=".ricercaStruttura" />
         <activity android:name=".sceltaStruttura" />
         <activity android:name=".ricercaPrestazione" />

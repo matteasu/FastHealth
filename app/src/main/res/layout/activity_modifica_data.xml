@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:textAlignment="center">
+
+        <ImageView
+            android:id="@+id/modificaInd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/modificaRW"
+            android:layout_marginLeft="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="4dp"
+            app:srcCompat="@drawable/ic_arrow_back_outline" />
+
+        <ImageView
+            android:id="@+id/modificaD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/modificaRW"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="4dp"
+            app:srcCompat="@drawable/ic_calendar_outline" />
+
+        <TextView
+            android:id="@+id/headerrP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/modificaInd"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-10dp"
+            android:gravity="center_horizontal"
+            android:text="Scegli una nuova data "
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/modificaRW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/modificaInd"
+            android:layout_margin="10dp"
+            android:clipToPadding="false"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/modificaInd"
+            android:text="Nessuna data disponibile"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/noDate"
+            android:layout_centerHorizontal="true"
+
+            />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

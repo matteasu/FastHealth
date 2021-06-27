@@ -17,6 +17,23 @@ public class Prenotazione implements Serializable {
     private boolean pagato;
     private Calendar data;
 
+
+
+
+    public Prenotazione(Prenotazione p ){
+        this.nomeEsame=p.getNomeEsame();
+        this.nomeStruttura=p.getNomeStruttura();
+        this.nomeMedico=p.getNomeMedico();
+        this.persCoda=p.getPersCoda();
+        this.ora=p.getOra();
+        this.costo=p.getCosto();
+        this.codAcc=p.getCodAcc();
+        this.noteMed=p.getNoteMed();
+        this.pagato=p.isPagato();
+        this.data=p.getData();
+    }
+
+
     public Prenotazione(String nomeEsame, String nomeStruttura, String ora,  String codAcc, String nomeMedico, Calendar data,float costo) {
         this.nomeEsame = nomeEsame;
         this.nomeStruttura = nomeStruttura;
@@ -107,6 +124,23 @@ public class Prenotazione implements Serializable {
     public void setCosto(float costo){this.costo=costo;}
 
     public int getPersCoda(){return persCoda;}
+
+    @Override
+    public boolean equals(Object u){
+        boolean r=false;
+        if(u!=null){
+            if(u instanceof Prenotazione){
+                Prenotazione uC=(Prenotazione) u;
+                if(this.getNomeEsame().equals(uC.getNomeEsame())){
+                    if(this.getNomeStruttura().equals(uC.getNomeStruttura())){
+                        r=true;
+                    }
+                }
+            }
+        }
+
+        return r;
+    }
 
 
 

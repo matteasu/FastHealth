@@ -67,7 +67,7 @@ public class Utente implements Serializable {
     public void addPrenotazione(Prenotazione p){
         prenotazioni.add(p);
     }
-
+    public void rimuoviPrenotazione (Prenotazione p) {prenotazioni.remove(p);}
 
 
     public void setCF(String CF) {

@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,11 +40,12 @@ public class ActivityPrenotazioni extends AppCompatActivity {
     Button p,mA;
     RecyclerView rW;
     adapterPrenotazioni aRW;
-
+    int prenM=9;
+    Utente u;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Utente u;
+
         ImageView back;
 
         //Prenotazione p = new Prenotazione("Colonoscopia", "Policlinico Dulio Casula", "13:40", "W40", "Sergio Pinto", null, (float) 69.49);
@@ -119,6 +121,17 @@ public class ActivityPrenotazioni extends AppCompatActivity {
         close.setOnClickListener(v->dialog.dismiss());
         p.setVisibility(prenotazioni.get(position).isPagato()?View.GONE:View.VISIBLE);
 
+
+        mA.setOnClickListener(v2->{
+            Intent modifica= new Intent(ActivityPrenotazioni.this,modificaData.class);
+            modifica.putExtra("prenotazione",prenotazioni.get(position));
+            modifica.putExtra("utente",u);
+            dialog.dismiss();
+            startActivityForResult(modifica,prenM);
+            //finish();
+        });
+
+
         p.setOnClickListener(v->{
             dialogBP=new AlertDialog.Builder(this);
             final View popupP=getLayoutInflater().inflate(R.layout.popup_pagamento,null);
@@ -149,6 +162,11 @@ public class ActivityPrenotazioni extends AppCompatActivity {
                     }
 
             });
+
+
+
+
+
             an.setOnClickListener(v12 -> dialogP.dismiss());
             dialogBP.setView(popupP);
             dialogP=dialogBP.create();
@@ -182,4 +200,70 @@ public class ActivityPrenotazioni extends AppCompatActivity {
         }else nT.setError(null);
         return err;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        setContentView(R.layout.activity_prenotazioni);
+        RecyclerView.LayoutManager lMRW;
+        rW = findViewById(R.id.prenotazioniRW);
+        lMRW = new LinearLayoutManager(this);
+
+        if(requestCode==prenM){
+            if(resultCode== Activity.RESULT_OK){
+                u = (Utente) data.getSerializableExtra("utente");
+                //prenotazioni = u.getPrenotazioni();
+                u.rimuoviPrenotazione((Prenotazione)data.getSerializableExtra("prenotazione"));
+                u.addPrenotazione((Prenotazione)data.getSerializableExtra("prenotazione"));
+                prenotazioni = u.getPrenotazioni();
+                aRW.notifyDataSetChanged();
+            }else{
+                u = (Utente) data.getSerializableExtra("utente");
+                prenotazioni = u.getPrenotazioni();
+            }
+        }
+
+
+
+
+        ImageView back;
+        aRW = new adapterPrenotazioni(prenotazioni);
+        aRW.notifyDataSetChanged();
+        //Prenotazione p = new Prenotazione("Colonoscopia", "Policlinico Dulio Casula", "13:40", "W40", "Sergio Pinto", null, (float) 69.49);
+
+
+
+
+        //u.getPrenotazioni().add(p);
+
+
+        back=findViewById(R.id.prenotazioniIndietro);
+        back.setOnClickListener(v->{
+            Intent returnIntent=getIntent();
+            returnIntent.putExtra("utente",u);
+            setResult(Activity.RESULT_OK, returnIntent);
+            finish();
+        });
+
+        //GESTIONE BARRA DI RICERCA
+       /* sw = findViewById(R.id.searchBBBB);
+        sw.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        sw.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                aRW.getFilter().filter(newText);
+                return false;
+            }
+        });*/
+
+        rW.setLayoutManager(lMRW);
+        rW.setAdapter(aRW);
+
+        aRW.setOnItemClickListener(this::creaDialog);
+    }//onActivityResult
 }
