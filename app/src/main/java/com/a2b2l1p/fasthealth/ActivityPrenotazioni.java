@@ -217,6 +217,10 @@ public class ActivityPrenotazioni extends AppCompatActivity {
                 u.addPrenotazione((Prenotazione)data.getSerializableExtra("prenotazione"));
                 prenotazioni = u.getPrenotazioni();
                 aRW.notifyDataSetChanged();
+                Context c = this.getApplicationContext();
+                CharSequence t = "Appuntamento modificato con successo";
+                int duration = Toast.LENGTH_LONG;
+                Toast.makeText(c, t, duration).show();
             }else{
                 u = (Utente) data.getSerializableExtra("utente");
                 prenotazioni = u.getPrenotazioni();

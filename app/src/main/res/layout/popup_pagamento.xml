@@ -17,7 +17,7 @@
             android:id="@+id/pagHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Paga ora la tua prestazione \n e salta la fila!"
+            android:text="Paga ora la tua prestazione \ne salta la fila!"
             android:textColor="@color/black"
             android:textSize="25dp" />
 

@@ -1,4 +1,3 @@
-/*
 package com.a2b2l1p.fasthealth;
 
 import android.app.AlertDialog;
@@ -7,6 +6,8 @@ import android.os.Bundle;
 import android.widget.DatePicker;
 
 import androidx.fragment.app.DialogFragment;
+
+import com.a2b2l1p.fasthealth.modificaData;
 
 import java.util.Calendar;
 
@@ -35,12 +36,12 @@ public class DatePickerFragment extends DialogFragment {
                             d.set(Calendar.YEAR,datePicker.getYear());
                             d.set(Calendar.MONTH,datePicker.getMonth());
                             d.set(Calendar.DAY_OF_MONTH,datePicker.getDayOfMonth());
-                           // ((Registrazione)getActivity()).updateDN(d);
-                           // ((Registrazione)getActivity()).doPositiveClick(d);
+                            ((modificaData)getActivity()).updateDN(d);
+                            ((modificaData)getActivity()).doPositiveClick(d);
                         }
                 )
                 .setNegativeButton(R.string.alert_dialog_cancel,
-                      //  (dialog, whichButton) -> ((Registrazione)getActivity()).doNegativeClick(d)
+                        (dialog, whichButton) -> ((modificaData)getActivity()).doNegativeClick(d)
                 )
                 .create();
 
@@ -59,4 +60,4 @@ public class DatePickerFragment extends DialogFragment {
         this.d = d;
     }
 }
-*/
+
