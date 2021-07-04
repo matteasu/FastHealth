@@ -77,10 +77,10 @@ public class Registrazione extends AppCompatActivity {
             err = false;
         } else {
             if (CF.getText().length() < 16) {
-                CF.setError("Codice Fiscale troppo corto");
+                CF.setError("Il codice fiscale deve avere una lunghezza di 16 caratteri");
                 err = false;
             } else if (CF.getText().length() > 16) {
-                CF.setError("Codice Fiscale troppo lungo");
+                CF.setError("Il codice fiscale deve avere una lunghezza di 16 caratteri");
                 err = false;
             } else CF.setError(null);
         }

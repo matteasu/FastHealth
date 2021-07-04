@@ -165,7 +165,7 @@
             android:layout_alignParentLeft="true"
             android:text="annulla"
             android:textColor="@color/black"
-            app:backgroundTint="#FF0000"
+            app:backgroundTint="#F44336"
              />
 
         <Button
@@ -177,6 +177,6 @@
             android:layout_alignParentRight="true"
             android:text="Paga ora"
             android:textColor="@color/black"
-            app:backgroundTint="#85BDF4" />
+            />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

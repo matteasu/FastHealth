@@ -42,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:gravity="left"
-            android:layout_marginLeft="90dp"
-            android:layout_marginRight="70dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:layout_marginTop="60dp">
         </TextView>
 
@@ -59,7 +59,7 @@
             android:textAllCaps="false"
             android:id="@+id/homePrenota"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textSize="20dp"
+            android:textSize="23dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp">
 
@@ -75,7 +75,7 @@
             android:textAllCaps="false"
             android:id="@+id/homeSearch"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textSize="20dp"
+            android:textSize="23dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp">
 
@@ -92,7 +92,7 @@
             android:textAllCaps="false"
             android:id="@+id/homePrenotazioni"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textSize="20dp"
+            android:textSize="23dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp">
 

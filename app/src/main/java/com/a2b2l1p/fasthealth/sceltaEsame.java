@@ -81,7 +81,7 @@ public class sceltaEsame extends AppCompatActivity {
 
 
 
-            String ora=(int)Math.floor(Math.random()*(20-8+1)+8)+":"+(int)Math.floor(Math.random()*(59-0+1)+0);
+            String ora=(int)Math.floor(Math.random()*(20-8+1)+8)+":"+(int)Math.floor(Math.random()*(59-10+1)+10);
             Prenotazione p=new Prenotazione(s.getE().get(position).getNome(),s.getNomeStruttura(),ora,"W20","Mario Rossi",s.getE().get(position).getData(),s.getE().get(position).getCosto());
             u.addPrenotazione(p);
             Intent a=getIntent();

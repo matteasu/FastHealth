@@ -33,7 +33,7 @@ public class ActivityPrenotazioni extends AppCompatActivity {
 
 
     //elementi dialog
-    TextView np,d,s,nm,cA,npa,note,amm;
+    TextView np,d,s,nm,cA,npa,note,amm,No;
     EditText nC,sC,CCV,nT;
     Button an,po;
     ImageView close;
@@ -56,6 +56,10 @@ public class ActivityPrenotazioni extends AppCompatActivity {
         u = (Utente) getIntent().getSerializableExtra("utente");
         //u.getPrenotazioni().add(p);
         prenotazioni = u.getPrenotazioni();
+        No=findViewById(R.id.noPrenotazioni);
+        if(prenotazioni.size()!=0){
+            No.setVisibility(View.GONE);
+        }
         rW = findViewById(R.id.prenotazioniRW);
         back=findViewById(R.id.prenotazioniIndietro);
         back.setOnClickListener(v->{
@@ -217,6 +221,10 @@ public class ActivityPrenotazioni extends AppCompatActivity {
                 u.addPrenotazione((Prenotazione)data.getSerializableExtra("prenotazione"));
                 prenotazioni = u.getPrenotazioni();
                 aRW.notifyDataSetChanged();
+                No=findViewById(R.id.noPrenotazioni);
+                if(prenotazioni.size()!=0){
+                    No.setVisibility(View.GONE);
+                }
                 Context c = this.getApplicationContext();
                 CharSequence t = "Appuntamento modificato con successo";
                 int duration = Toast.LENGTH_LONG;

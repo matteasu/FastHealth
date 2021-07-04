@@ -38,8 +38,8 @@ public class adapterDate extends RecyclerView.Adapter<adapterDate.holder> {
     public void onBindViewHolder(adapterDate.holder holder, int position) {
         Calendar c = date.get(position);
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        holder.nuovaData.setText(format.format(c.getTime()));
-        holder.nuovoOrario.setText((int)Math.floor(Math.random()*(20-8+1)+8)+":"+(int)Math.floor(Math.random()*(59-10+1)+10));
+        holder.nuovaData.setText("Nuova data: "+format.format(c.getTime()));
+        holder.nuovoOrario.setText("Nuovo orario: "+(int)Math.floor(Math.random()*(20-8+1)+8)+":"+(int)Math.floor(Math.random()*(59-10+1)+10));
     }
 
     @Override
@@ -66,7 +66,7 @@ public class adapterDate extends RecyclerView.Adapter<adapterDate.holder> {
                 if (listener != null) {
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(position,nuovoOrario.getText().toString());
+                        listener.onItemClick(position,nuovoOrario.getText().toString().substring(13));
                     }
                 }
             });

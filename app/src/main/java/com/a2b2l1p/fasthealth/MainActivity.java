@@ -13,14 +13,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity {
-    EditText username,password;
+    EditText username, password;
     Button loginB;
     TextView register;
-    ArrayList<Utente> utenti =new ArrayList<>();
+    ArrayList<Utente> utenti = new ArrayList<>();
     Utente uLog;
-    String usr,psw;
-    int loginRegistrazione=1;
-    int loginHome=2;
+    String usr, psw;
+    int loginRegistrazione = 1;
+    int loginHome = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //utenti.add(new Utente("m","a","admin","a","aa"));
         //recupero elementi view
-        username=findViewById(R.id.loginUsername);
-        password=findViewById(R.id.loginPassword);
-        loginB=findViewById(R.id.loginButton);
-        register=findViewById(R.id.loginRegister);
-
-        register.setOnClickListener(v->{
-            Intent registrazione = new Intent(MainActivity.this,Registrazione.class);
-            registrazione.putExtra("lista",utenti);
-            startActivityForResult(registrazione,loginRegistrazione);
+        username = findViewById(R.id.loginUsername);
+        password = findViewById(R.id.loginPassword);
+        loginB = findViewById(R.id.loginButton);
+        register = findViewById(R.id.loginRegister);
+        login();
+        register.setOnClickListener(v -> {
+            Intent registrazione = new Intent(MainActivity.this, Registrazione.class);
+            registrazione.putExtra("lista", utenti);
+            startActivityForResult(registrazione, loginRegistrazione);
         });
 
     }
@@ -54,19 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        username=findViewById(R.id.loginUsername);
-        password=findViewById(R.id.loginPassword);
-        loginB=findViewById(R.id.loginButton);
-        register=findViewById(R.id.loginRegister);
+        username = findViewById(R.id.loginUsername);
+        password = findViewById(R.id.loginPassword);
+        loginB = findViewById(R.id.loginButton);
+        register = findViewById(R.id.loginRegister);
 
 
         login();
 
 
-        register.setOnClickListener(v->{
-            Intent registrazione = new Intent(MainActivity.this,Registrazione.class);
-            registrazione.putExtra("lista",utenti);
-            startActivityForResult(registrazione,loginRegistrazione);
+        register.setOnClickListener(v -> {
+            Intent registrazione = new Intent(MainActivity.this, Registrazione.class);
+            registrazione.putExtra("lista", utenti);
+            startActivityForResult(registrazione, loginRegistrazione);
         });
 
     }//onActivityResult
@@ -122,14 +123,15 @@ public class MainActivity extends AppCompatActivity {
 
         if (!trovato) {
             username.setError("utente inesistente");
-        } else if (trovato && errPSW) {
+        } else if (errPSW) {
             password.setError("password sbagliata");
         }
 
         return ret;
     }
-    void login(){
-        loginB.setOnClickListener(v->{
+
+    void login() {
+        loginB.setOnClickListener(v -> {
             if (verificaLogin()) {
                 usr = username.getText().toString();
                 psw = password.getText().toString();

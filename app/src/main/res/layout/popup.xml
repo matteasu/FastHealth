@@ -133,7 +133,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/modificaAPP"
             android:text="Modifica appuntamento"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
             android:layout_below="@id/spazio"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true" />

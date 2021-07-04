@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ViewPrenotazioni"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ViewPrenotazioni"
     android:orientation="vertical">
 
 
-
-
     <RelativeLayout
-        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:textAlignment="center">
 
         <ImageView
             android:id="@+id/prenotazioniIndietro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/prenotazioniRW"
+            android:layout_marginLeft="10dp"
             android:clickable="true"
             android:focusable="true"
             android:paddingLeft="4dp"
-            android:layout_marginLeft="10dp"
             app:srcCompat="@drawable/ic_arrow_back_outline" />
 
         <TextView
+            android:id="@+id/headerP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/prenotazioniIndietro"
@@ -40,16 +38,28 @@
             android:text="Prenotazioni"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:id="@+id/headerP"
             android:textSize="35dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/prenotazioniRW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/headerP"
             android:layout_margin="10dp"
             android:clipToPadding="false"
-            android:layout_width="match_parent"
+
+            />
+
+        <TextView
+            android:id="@+id/noPrenotazioni"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/prenotazioniIndietro"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Nessuna prenotazione"
+            android:textColor="@color/black"
+            android:textSize="28dp"
 
             />
 
